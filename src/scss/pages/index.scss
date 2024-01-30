@@ -92,6 +92,7 @@
     }
 }
 .stages{
+    margin: 120px 0 0 0;
     .stages__title{
         max-width: 806px;
         position: relative;
@@ -149,11 +150,20 @@
     }
     img{
         position: absolute;
+        width: 30vw;
         top: -50%;
-        right: -6%;
+        right: -5%;
     }
 }
-
+@media screen and (max-width: 1280px) {
+    .stages__list-item.seven{
+        img{
+            width: 25vw;
+        top: -40%;
+        right: 1vw;
+        }
+    }
+}
 .participants{
     margin: 200px 0 0 0;
     position: relative;
@@ -219,4 +229,170 @@
     // left: 0;
     right: 0;
     transition: all ease 0.5s;
+}
+@media screen and (max-width: 991px){
+    .stages__list{
+        grid-template-columns: 1fr 1fr;
+        .three{
+            grid-column: auto;
+            grid-row: auto;
+        }
+        .seven{
+            grid-column: 1/3;
+            .text-container{
+                max-width: 100%;
+            }
+            img{
+                display: none;
+            }
+        }
+    }
+    .idea{
+        flex-direction: column;
+    }
+    .idea__title{
+        display: none;
+    }
+    .idea__img{
+        margin: 24px 0;
+    }
+    .chess{
+        flex-direction: column;
+        tr{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .chess__img{
+        margin: 0 0 0 0;
+    }
+    .chess table tr td:not(:last-child){
+        border-right: none;
+    }
+    .chess table tr:not(:last-child) td{
+        padding-bottom: 0;
+    }
+    .chess table tr:not(:first-child) td{
+        padding-top: 0;
+    }
+    .chess table tr td:not(:first-child) {
+        padding-left: 0;
+    }
+    .chess table td{
+        margin: 6px 0;
+    }
+    .chess table tr{
+        padding: 10px 0;
+    }
+    .stages__title{
+        a{
+            margin: 12px 0 0 0 ;
+            position: static;
+        }
+    }
+    .stages__slider{
+        display: none;
+        overflow: hidden;
+        .stages__slider-row{
+            display: flex;
+            position: relative;
+            right: 0;
+            transition: all ease 0.5s;
+            .stages__slider-item{
+                margin: 0 40px 0 0;
+                // max-width: 350px;
+                
+            }
+            .stages__card{
+                // display: flex;
+                background-image: url('../img/background.webp');
+                background-color: rgba(247, 211, 158, 0.9);
+                background-blend-mode: overlay;
+                padding: 60px 20px 20px 20px;
+                border: 1px solid red;
+                .stages__card-item{
+                    display: flex;
+                    
+                }
+                .item-number{
+                    background-color: #fff;
+                    border-radius: 50%;
+                    width: 36px;
+                    height: 36px;
+                    padding: 11px;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    margin: 0 16px 0 0;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:425px) {
+    .stages__list{
+        display: none;
+    }
+    .stages{
+        
+
+        .navigation{
+            position: static;
+            margin: 28px 0 0 0;
+            display: flex;
+        // flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .pagination{
+            display: flex;
+            margin: 0 16px;
+        }
+        .pagination-item{
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: #D9D9D9;
+            border-radius: 50%;
+                &:not(:last-child){
+                    margin: 0 6px 0 0;
+                }
+                &.active{
+                    background-color: #313131;
+                }
+            }
+            .stages-navigation-btn{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #313131;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+            }
+        }
+    }
+    .stages__slider{
+        display: flex;
+        
+        .stages__card-item{
+            width: 80vw;
+            margin: 0 0 28px 0;
+        }
+        
+    }
+}
+.stages__slider{
+    display: none;
+}
+.idea__title-mobile{
+    display: none;
+}
+@media screen and (max-width: 991px) {
+    .idea__title-mobile{
+        display: block;
+    }
 }

@@ -4,5 +4,6 @@ import * as myModule from './modules/slider.js'
 flsFunctions.isWebp()
 
 myModule.slider()
+myModule.stegesSlider()
 
 
