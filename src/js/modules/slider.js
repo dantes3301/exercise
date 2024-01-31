@@ -16,6 +16,7 @@ export function slider() {
     if (window.innerWidth <= 991){
         slideNum = 1
         document.querySelector('.slide-num-one').innerHTML = slideNum 
+        setInterval
         btnNext.onclick = () => {
             offfset = offfset + participantSlide + 20
             sliderLine.style.right = offfset + 'px'
@@ -47,9 +48,9 @@ export function slider() {
             sliderLine.style.right = offfset + 'px'
             slideNum = slideNum + 3
             if (sliderLine.offsetWidth / 2 <= offfset){
-                sliderLine.style.right = 0 + 'px'
+                sliderLine.style.right =  slide + 'px'
                 offfset = 0
-                slideNum = 3
+                slideNum = 6
             }
             document.querySelector('.slide-num-one').innerHTML = slideNum 
         }
@@ -81,6 +82,7 @@ export function stegesSlider() {
         document.querySelector('.pagination').innerHTML += `<span class="pagination-item"> </span>`
         document.querySelectorAll('.pagination-item')[0].classList.add('active')
     })
+    
     StagesbtnNext.onclick = () => {
         stagesSlideNum++
         stagesOffset = stagesOffset + stagesSlide + 40
@@ -131,4 +133,29 @@ export function stegesSlider() {
             sliderRow.style.right = sliderRow.offsetWidth - stagesSlide  -40 + 'px'
         }
     }
+    setInterval(() => {
+        stagesSlideNum++
+        stagesOffset = stagesOffset + stagesSlide + 40
+        sliderRow.style.right = stagesOffset +'px'
+        
+        if (stagesSlideNum >= document.querySelectorAll('.pagination-item').length) {
+            document.querySelectorAll('.pagination-item').forEach(e=>{
+                e.classList.remove('active')
+            })
+            stagesSlideNum = 0 
+            document.querySelectorAll('.pagination-item')[stagesSlideNum].classList.add('active')
+        }
+        else{
+            document.querySelectorAll('.pagination-item').forEach(e=>{
+                e.classList.remove('active')
+            })
+            
+            document.querySelectorAll('.pagination-item')[stagesSlideNum].classList.add('active')
+        }
+        if (sliderRow.offsetWidth <= stagesOffset){
+            sliderRow.style.right = 0 + 'px'
+            stagesOffset = 0
+            stagesSlideNum=0
+        }
+    }, 4000);
 }
