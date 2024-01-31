@@ -3,34 +3,69 @@
 const btnPrev = document.querySelector('.navigation-btn.prev')
 const btnNext = document.querySelector('.navigation-btn.next ')
 const slide = document.querySelector('.participants__slider').offsetWidth
+const participantSlide = document.querySelector('.participant__card').offsetWidth
 const sliderLine = document.querySelector('.slider-line')
 let offfset = 0
 document.querySelector('.slide-num-two').innerHTML = document.querySelectorAll('.slider__item').length
 let slideNum = 3
 
+
+
 export function slider() {
-    btnNext.onclick = () => {
-        offfset = offfset + slide
-        sliderLine.style.right = offfset + 'px'
-        slideNum = slideNum + 3
-        if (sliderLine.offsetWidth / 2 <= offfset){
-            sliderLine.style.right = 0 + 'px'
-            offfset = 0
-            slideNum = 3
-        }
+    console.log(window.innerWidth);
+    if (window.innerWidth <= 991){
+        slideNum = 1
         document.querySelector('.slide-num-one').innerHTML = slideNum 
-    }
-    btnPrev.onclick = () => {
-        offfset = offfset - slide
-        sliderLine.style.right = -offfset + 'px'
-        slideNum = slideNum - 3
-        if (0 >=  offfset){
-            sliderLine.style.right = 0 + 'px'
-            offfset = 0
-            slideNum = 3 
+        btnNext.onclick = () => {
+            offfset = offfset + participantSlide + 20
+            sliderLine.style.right = offfset + 'px'
+            slideNum = slideNum + 1
+            if (sliderLine.offsetWidth <= offfset){
+                sliderLine.style.right = 0 + 'px'
+                offfset = 0
+                slideNum = 1
+            }
+            document.querySelector('.slide-num-one').innerHTML = slideNum 
         }
-        document.querySelector('.slide-num-one').innerHTML = slideNum
+        btnPrev.onclick = () => {
+            offfset = offfset - participantSlide - 20
+            sliderLine.style.right = offfset + 'px'
+            slideNum = slideNum - 1
+            console.log(sliderLine.offsetWidth, offfset);
+            if (0 >  offfset){
+                sliderLine.style.right = sliderLine.offsetWidth - participantSlide - 20 + 'px'
+                offfset = sliderLine.offsetWidth - participantSlide - 20
+                slideNum = document.querySelectorAll('.participant__card').length 
+                console.log(sliderLine.offsetWidth, offfset);
+            }
+            document.querySelector('.slide-num-one').innerHTML = slideNum
+        }
     }
+    else{
+        btnNext.onclick = () => {
+            offfset = offfset + slide
+            sliderLine.style.right = offfset + 'px'
+            slideNum = slideNum + 3
+            if (sliderLine.offsetWidth / 2 <= offfset){
+                sliderLine.style.right = 0 + 'px'
+                offfset = 0
+                slideNum = 3
+            }
+            document.querySelector('.slide-num-one').innerHTML = slideNum 
+        }
+        btnPrev.onclick = () => {
+            offfset = offfset - slide
+            sliderLine.style.right = -offfset + 'px'
+            slideNum = slideNum - 3
+            if (0 >=  offfset){
+                sliderLine.style.right = 0 + 'px'
+                offfset = 0
+                slideNum = 3 
+            }
+            document.querySelector('.slide-num-one').innerHTML = slideNum
+        }
+    }
+    
 }
 
 const stagesBtnPrev = document.querySelector('.stages-navigation-btn.prev')
@@ -42,7 +77,7 @@ let stagesSlideNum = 0
 
 export function stegesSlider() {
     document.querySelectorAll('.stages__slider-item').forEach(elem => {
-        console.log(elem);
+        
         document.querySelector('.pagination').innerHTML += `<span class="pagination-item"> </span>`
         document.querySelectorAll('.pagination-item')[0].classList.add('active')
     })
@@ -95,7 +130,5 @@ export function stegesSlider() {
             stagesOffset = sliderRow.offsetWidth - stagesSlide  -40
             sliderRow.style.right = sliderRow.offsetWidth - stagesSlide  -40 + 'px'
         }
-        console.log(stagesOffset, stagesSlide);
-        console.log(stagesOffset);
     }
 }

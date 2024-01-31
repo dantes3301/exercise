@@ -3,13 +3,15 @@
         display: block;
         background-color: #1F1F1F;
         color: #fff;
-        width: 165px;
+        width: 263px;
+        max-height: 72px;
         border-radius: 66px;
-        padding: 20px 49px;
+        padding: 16px 49px;
         text-decoration: none;
         font-size: 16px;
         font-weight: 500;
-        box-sizing: content-box;
+        line-height: 20px;
+        box-sizing: border-box;
         text-align: center;
         transition: .5s;
         &:hover{
@@ -19,16 +21,16 @@
     }
     &-transparent{
         display: block;
-       
         color: #1F1F1F;
         border: 2px solid #1F1F1F;
-        width: 165px;
+        width: 263px;
+        max-height: 72px;
         border-radius: 66px;
-        padding: 20px 49px;
+        padding: 11px 49px;
         text-decoration: none;
         font-size: 16px;
         font-weight: 500;
-        box-sizing: content-box;
+        box-sizing: border-box;
         text-align: center;
         transition: .5s;
         &:hover{
